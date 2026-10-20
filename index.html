@@ -95,15 +95,17 @@
             </div>
         </div>
 
-               <!-- MÚSICA LOCAL DIRECTA -->
-        <div class="seccion">
-            <h3>Escucha nuestra canción mientras lees:</h3>
-            <audio id="musicaBoda" loop prefetch="auto">
-                <source src="./Slide Away.mp3" type="audio/mpeg">
-                Tu navegador no soporta este reproductor de audio.
-            </audio>
-            <p style="font-size: 0.8em; color: #888; font-style: italic; margin-top: 5px;">🎵 Sonando: Slide Away - Oasis</p>
+                <!-- REPRODUCTOR DE MÚSICA OCULTO CON BOTÓN FLOTANTE ESTÉTICO -->
+        <audio id="musicaBoda" loop>
+            <source src="Slide Away.mp3" type="audio/mpeg">
+            <source src="https://soundhelix.com" type="audio/mpeg">
+        </audio>
+
+        <!-- BOTÓN ESTÉTICO FLOTANTE -->
+        <div id="controlMusicaFlotante" class="reproductor-flotante" onclick="alternarMusica()">
+            <span id="iconoMusica" class="icono-reproductor girar">🎵</span>
         </div>
+
 
 
         <!-- GALERÍA DE FOTOS -->

@@ -4,6 +4,7 @@ const mapaFiesta = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4383.40
 
 // FUNCIONA PARA MOSTRAR LA INVITACIÓN
 // FUNCIONA PARA MOSTRAR LA INVITACIÓN E INICIAR MÚSICA EN MÓVILES
+// FUNCIONA PARA MOSTRAR LA INVITACIÓN E INICIAR MÚSICA EN MÓVILES
 function mostrarInvitacion() {
     // Oculta el sobre
     document.getElementById('pantallaSobre').style.display = 'none';
@@ -12,15 +13,15 @@ function mostrarInvitacion() {
     // Captura el reproductor de audio
     const musica = document.getElementById('musicaBoda');
     if (musica) {
-        // Forzar volumen alto y reproducción explícita
         musica.volume = 1.0; 
         musica.play().then(() => {
-            console.log("Música iniciada con éxito tras el clic del usuario.");
-        }).catch(error => {
-            console.log("El navegador móvil sigue solicitando un play manual dentro de la tarjeta:", error);
-        });
+            // Asegura que el icono gire al iniciar
+            document.getElementById('iconoMusica').classList.add('girar');
+            document.getElementById('iconoMusica').classList.remove('pausado');
+        }).catch(error => console.log("Autoplay interactivo activo."));
     }
 }
+
 
 
 // FUNCIONES PARA CONTROLAR EL MAPA FLOTANTE INTELIGENTE
@@ -64,3 +65,18 @@ setInterval(function() {
     }
 }, 1000);
 
+// FUNCIÓN PARA REPRODUCIR O PAUSAR CON EL BOTÓN ESTÉTICO
+function alternarMusica() {
+    const musica = document.getElementById('musicaBoda');
+    const icono = document.getElementById('iconoMusica');
+    
+    if (musica.paused) {
+        musica.play();
+        icono.classList.remove('pausado');
+        icono.innerText = "🎵";
+    } else {
+        musica.pause();
+        icono.classList.add('pausado');
+        icono.innerText = "🔇";
+    }
+}
