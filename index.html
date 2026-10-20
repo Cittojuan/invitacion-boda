@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Boda</title>
+        <!-- ICONO DE LA PESTAÑA (FAVICON) -->
+    <link rel="icon" href="./icono.png" type="image/png">
+
+
+    <!-- FUENTES DE GOOGLE FONTS -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <!-- ENLACE A TU NUEVO ARCHIVO CSS APARTE -->
+    <link rel="stylesheet" href="./styles.css?v=2">
+
+    <style>
+        /* FUENTES BLINDADAS CONTRA BLOQUEOS LOCALES */
+        body {
+            font-family: 'Playfair Display', serif !important; 
+        }
+        h1, .texto-sobre-titulo {
+            font-family: 'Cinzel Decorative', serif !important; 
+            font-weight: 700 !important;
+            color: #4a4a4a !important;
+        }
+        .texto-sobre-sub {
+            color: #b8975a !important;
+            font-weight: bold !important;
+        }
+
+                /* FORZAR TAMAÑO DEL MAPA EN LA VENTANA MODAL */
+        #iframeMapa {
+            width: 100% !important;
+            height: 300px !important;
+            border: 0 !important;
+            border-radius: 8px !important;
+            margin-top: 15px !important;
+        }
+
+    </style>
+
+</head>
+<body>
+
+   <!-- CONTENEDOR VISTA INICIAL (SOBRE REESTILIZADO) -->
+<div id="pantallaSobre">
+
+        <div class="texto-sobre-titulo">Tatiana &amp; Juan</div>
+        <div class="texto-sobre-sub">Nuestra Boda</div>
+        
+        <!-- SOBRE CON SELLO -->
+        <div class="sobre-inicial" id="sobreCerrado" onclick="mostrarInvitacion()">
+            <div class="sello-lacre">T&amp;J</div>
+        </div>
+        
+        <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.9em; color: #888; margin-top: 25px;">
+            De clic en el sobre para ir a nuestra invitación
+        </p>
+    </div>
+    <!-- TARJETA DE INVITACIÓN (CONTENIDO GENERAL) -->
+    <div class="invitacion" id="tarjetaInvitacion">
+        <h1>Tatiana &amp; Juan</h1>
+        <p style="font-style: italic; font-size: 1.2em;">¡Nos casamos!</p>
+<!-- CITA BÍBLICA -->
+<div style="font-style: italic; color: #777; max-width: 400px; margin: 30px auto; padding: 0 10px; line-height: 1.6; font-size: 0.95em;">
+    "Y ahora permanecen la fe, la esperanza y el amor, estos tres; pero el mayor de ellos es el amor."
+    <span style="display: block; font-weight: bold; color: #b8975a; margin-top: 5px; font-size: 0.85em; text-transform: uppercase; letter-spacing: 1px;">1 Corintios 13:13</span>
+</div>
+
+        <hr style="width: 50%; border: 0; border-top: 1px solid #b8975a; margin: 30px auto;">
+
+        <!-- DÍA DE LA BODA -->
+        <div class="seccion">
+            <p>Tenemos el placer de invitarte a celebrar nuestro amor el día:</p>
+            <div class="fecha">SÁBADO, 13 DE FEBRERO DE 2027</div>
+            <p>Hora: 21:00 hs.</p>
+                        <!-- BOTÓN AGREGAR AL CALENDARIO -->
+            <a href="https://google.com¡Nos+encantaría+que+nos+acompañes+en+nuestro+gran+día!&location=Nombre+del+Salón,+Dirección+aquí&sf=true&output=xml" class="btn-calendario" target="_blank">
+                📅 Agendar en mi Calendario
+            </a>
+
+        </div>
+
+        <!-- RELOJ CUENTA REGRESIVA -->
+        <div class="seccion">
+            <h3>¿Cuánto falta?</h3>
+            <div class="contador">
+                <div class="tiempo-bloque"><div id="dias" class="tiempo-numero">00</div><div class="tiempo-etiqueta">Días</div></div>
+                <div class="tiempo-bloque"><div id="horas" class="tiempo-numero">00</div><div class="tiempo-etiqueta">Hs</div></div>
+                <div class="tiempo-bloque"><div id="minutos" class="tiempo-numero">00</div><div class="tiempo-etiqueta">Min</div></div>
+                <div class="tiempo-bloque"><div id="segundos" class="tiempo-numero">00</div><div class="tiempo-etiqueta">Seg</div></div>
+            </div>
+        </div>
+
+        <!-- MÚSICA -->
+        <div class="seccion">
+            <h3>Escucha nuestra canción mientras lees:</h3>
+            <audio id="musicaBoda" controls loop>
+                <source src="Oasis - Slide Away (Official Lyric Video).mp3" type="audio/mpeg">
+                <source src="https://soundhelix.com" type="audio/mpeg">
+            </audio>
+            <p style="font-size: 0.8em; color: #888; font-style: italic; margin-top: 5px;">🎵 Sonando: Slide Away - Oasis</p>
+        </div>
+
+        <!-- GALERÍA DE FOTOS -->
+        <div class="seccion">
+            <h3>Nuestros Momentos</h3>
+            <div class="galeria">
+                <img src="https://picsum.photos" alt="Foto Novios 1">
+                <img src="https://picsum.photos" alt="Foto Novios 2">
+                <img src="https://picsum.photos" alt="Foto Novios 3">
+                <img src="https://picsum.photos" alt="Foto Novios 4">
+            </div>
+        </div>
+
+               <!-- SECCIÓN: DÓNDE Y CUÁNDO -->
+<div class="seccion">
+    <h3 style="color: #b8975a; letter-spacing: 1px;">Ubicaciones</h3>
+
+    <!-- BLOQUE IGLESIA -->
+    <div style="margin-bottom: 30px; background: #faf8f5; padding: 20px; border-radius: 6px; border: 1px solid #e6dfd3;">
+        <div style="font-size: 1.5em; margin-bottom: 5px;">⛪</div>
+        <p style="margin: 5px 0; font-weight: bold; color: #5c503c;">Ceremonia Religiosa</p>
+        <p style="margin: 5px 0; font-size: 0.9em;">Parroquia San Blas</p>
+        <p style="margin: 5px 0; font-size: 0.85em; color: #777; font-style: italic;">Hora: 18:30 hs.</p>
+        <button class="btn-regalo" style="padding: 8px 15px; font-size: 0.85em; margin-top: 10px;" onclick="abrirMapa('Iglesia')">📍 Ver Mapa de la Iglesia</button>
+    </div>
+
+    <!-- BLOQUE FIESTA -->
+    <div style="background: #faf8f5; padding: 20px; border-radius: 6px; border: 1px solid #e6dfd3;">
+        <div style="font-size: 1.5em; margin-bottom: 5px;">🥂</div>
+        <p style="margin: 5px 0; font-weight: bold; color: #5c503c;">Celebración</p>
+        <p style="margin: 5px 0; font-size: 0.9em;">Quinta Concordia</p>
+        <p style="margin: 5px 0; font-size: 0.85em; color: #777; font-style: italic;">Hora: 21:00 hs.</p>
+        <button class="btn-regalo" style="padding: 8px 15px; font-size: 0.85em; margin-top: 10px;" onclick="abrirMapa('Fiesta')">📍 Ver Mapa del Salón</button>
+    </div>
+</div>
+
+<!-- ÚNICA VENTANA FLOTANTE INTELIGENTE (MODAL) -->
+<div id="modalMapa" class="modal-mapa" onclick="cerrarMapa()">
+    <div class="modal-contenido" onclick="event.stopPropagation();">
+        <span class="cerrar-modal" onclick="cerrarMapa()">&times;</span>
+        <h4 id="tituloModalMapa" style="margin: 5px 0; color: #b8975a; font-family: 'Playfair Display', serif;">Ubicación</h4>
+        <!-- El mapa cambiará automáticamente según el botón presionado -->
+        <iframe id="iframeMapa" src="" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+</div>
+
+
+
+
+        <!-- NUEVA SECCIÓN: CÓDIGO DE VESTIMENTA (DRESS CODE) -->
+        <div class="seccion" style="background: #fdfbf7; border: 1px solid #e6dfd3; padding: 30px 20px; border-radius: 8px; max-width: 450px; margin: 40px auto;">
+            <div style="font-size: 2.2em; color: #b8975a; margin-bottom: 10px;">✨</div>
+            <h3 style="margin-top: 0; color: #5c503c; letter-spacing: 1px;">Código de Vestimenta</h3>
+            <p style="font-size: 1.2em; font-weight: bold; color: #b8975a; margin: 10px 0;">Elegante Formal</p>
+            <p style="font-size: 0.9em; color: #777; font-style: italic; margin: 0;">
+                Queremos verte brillar. Agradecemos asistir con traje oscuro los caballeros y vestido largo las damas.
+            </p>
+        </div>
+
+        <!-- REGALOS -->
+        <div class="seccion">
+            <h3>Mesa de Regalos</h3>
+            <p style="margin-bottom: 20px;">Tu presencia es nuestro mejor regalo, pero si deseas hacernos un detalle, puedes usar los siguientes medios:</p>
+            <div style="background: #fdfbf7; border: 1px dashed #b8975a; padding: 20px; border-radius: 6px; text-align: left; max-width: 400px; margin: 0 auto 20px auto;">
+                <p style="margin: 5px 0;"><strong>Banco:</strong> Nombre del Banco</p>
+                <p style="margin: 5px 0;"><strong>Cuenta / CBU:</strong> 123456789012345678</p>
+                <p style="margin: 5px 0;"><strong>Alias:</strong> boda.tatiana.juan</p>
+                <p style="margin: 5px 0;"><strong>Titular:</strong> Nombre Completo</p>
+            </div>
+            <a href="https://tuestilolista.com" class="btn-regalo" target="_blank">Ver Lista de Regalos Online</a>
+        </div>
+
+        <!-- CONFIRMACIÓN -->
+        <div class="seccion">
+            <h3>¿Nos acompañas?</h3>
+            <p>Por favor, confirma tu asistencia antes del 1 de Diciembre presionando el siguiente botón:</p>
+            <a href="https://wa.me¡Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Tatiana%20y%20Juan." class="btn-whatsapp" target="_blank">
+                Confirmar Asistencia por WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <!-- ENLACE AL ARCHIVO JAVASCRIPT EXTERNO -->
+    <script src="script.js"></script>
+</body>
+</html>

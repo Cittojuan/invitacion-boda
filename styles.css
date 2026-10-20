@@ -1,0 +1,137 @@
+/* AJUSTE DE CENTRADO DE ALTA GAMA (styles.css) */
+
+body {
+    
+    background-color: #ffffff; 
+    color: #4a4a4a;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* CONTENEDOR ESPECÍFICO PARA LA ENTRADA */
+#pantallaSobre {
+    width: 100%;
+    max-width: 400px;
+    min-height: 85vh; /* Ocupa casi toda la altura disponible del celular */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente los textos y el sobre */
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: auto;
+}
+
+/* EL SOBRE EN FORMA DE CARTA */
+.sobre-inicial {
+    width: 100%;
+    max-width: 360px;
+    height: 210px;
+    background-color: #a3b899; 
+    border-radius: 4px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    margin: 30px auto; /* Añade un espacio equilibrado arriba y abajo del sobre */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Solapa triangular superior del sobre impreso */
+.sobre-inicial::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 190px solid transparent;
+    border-right: 190px solid transparent;
+    border-top: 110px solid #92a888; /* Tono ligeramente más oscuro para dar profundidad */
+    border-radius: 4px 4px 0 0;
+}
+
+@media(max-width: 400px) {
+    .sobre-inicial::before {
+        border-left-width: 45vw;
+        border-right-width: 45vw;
+        border-top-width: 26vw;
+    }
+}
+
+/* SELLO DE LACRE DORADO */
+.sello-lacre {
+    width: 55px;
+    height: 55px;
+    background: radial-gradient(circle, #e0c388 0%, #b8975a 100%);
+    border-radius: 50%;
+    position: absolute;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2), inset 0 2px 4px rgba(255,255,255,0.4);
+    border: 2px solid #a38249;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff4d0;
+    font-size: 1.4em;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.sobre-inicial:hover {
+    transform: scale(1.03);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.22);
+}
+
+/* LA TARJETA DE INVITACIÓN EXPANSIBLE */
+.invitacion {
+    display: none; 
+    width: 100%;
+    max-width: 500px;
+    background: white;
+    padding: 40px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid #e6dfd3;
+    box-sizing: border-box;
+    animation: aparecerSuave 0.8s ease forwards;
+    z-index: 5;
+    margin: 20px auto;
+}
+
+@keyframes aparecerSuave {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ELEMENTOS INTERNOS DE LA TARJETA */
+.fecha { font-size: 1.2em; font-weight: bold; margin: 20px 0; letter-spacing: 2px; color: #b8975a; }
+.seccion { margin: 35px 0; }
+.contador { display: flex; justify-content: center; gap: 12px; margin: 25px 0; }
+.tiempo-bloque { background: #faf8f5; border: 1px solid #e6dfd3; padding: 10px; border-radius: 6px; min-width: 55px; }
+.tiempo-numero { font-size: 1.6em; font-weight: bold; color: #b8975a; }
+.tiempo-etiqueta { font-size: 0.7em; text-transform: uppercase; color: #888; }
+
+.galeria { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
+.galeria img { width: 100%; height: 140px; object-fit: cover; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+
+.btn-whatsapp { display: inline-block; background-color: #25d366; color: white; font-family: 'Arial', sans-serif; font-weight: bold; padding: 12px 25px; text-decoration: none; border-radius: 50px; margin-top: 15px; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2); }
+.btn-regalo { display: inline-block; background-color: #b8975a; color: white; font-family: 'Arial', sans-serif; font-weight: bold; padding: 12px 25px; text-decoration: none; border-radius: 4px; margin-top: 15px; }
+.btn-calendario { display: inline-block; background-color: #ffffff; color: #b8975a; font-family: 'Arial', sans-serif; font-size: 0.9em; font-weight: bold; padding: 10px 20px; text-decoration: none; border: 1px solid #b8975a; border-radius: 4px; margin-top: 15px; }
+
+/* MODAL DEL MAPA */
+.modal-mapa { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); justify-content: center; align-items: center; }
+.modal-contenido { background-color: white; padding: 20px; border-radius: 12px; width: 90%; max-width: 450px; position: relative; }
+.cerrar-modal { position: absolute; top: 10px; right: 15px; font-size: 28px; font-weight: bold; color: #aaa; cursor: pointer; }
+.modal-contenido iframe { width: 100% !important; height: 300px !important; margin-top: 20px !important; border: 0; border-radius: 8px; }
