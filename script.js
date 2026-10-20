@@ -3,15 +3,25 @@ const mapaIglesia = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2606.6
 const mapaFiesta = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4383.4059660717185!2d-57.54210544646785!3d-25.25254487186527!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da5dd2440d111%3A0x51e1afa209c9a3f6!2sQuincho%20Concordia!5e1!3m2!1ses!2spy!4v1792508341324!5m2!1ses!2spy";
 
 // FUNCIONA PARA MOSTRAR LA INVITACIÓN
+// FUNCIONA PARA MOSTRAR LA INVITACIÓN E INICIAR MÚSICA EN MÓVILES
 function mostrarInvitacion() {
+    // Oculta el sobre
     document.getElementById('pantallaSobre').style.display = 'none';
     document.getElementById('tarjetaInvitacion').style.display = 'block';
     
+    // Captura el reproductor de audio
     const musica = document.getElementById('musicaBoda');
     if (musica) {
-        musica.play().catch(error => console.log("Autoplay interactivo activo."));
+        // Forzar volumen alto y reproducción explícita
+        musica.volume = 1.0; 
+        musica.play().then(() => {
+            console.log("Música iniciada con éxito tras el clic del usuario.");
+        }).catch(error => {
+            console.log("El navegador móvil sigue solicitando un play manual dentro de la tarjeta:", error);
+        });
     }
 }
+
 
 // FUNCIONES PARA CONTROLAR EL MAPA FLOTANTE INTELIGENTE
 function abrirMapa(tipo) {
