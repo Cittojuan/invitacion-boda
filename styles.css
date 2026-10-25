@@ -3,19 +3,22 @@
 
 /* VARIABLES DE IDENTIDAD VISUAL UNIFICADA */
 :root {
-    --verde-acuarela: #536d40;     /* Verde de los trazos e ilustraciones */
-    --verde-sobre: #465d36;        /* Tono un poco más oscuro para el cuerpo del sobre */
-    --verde-solapa: #3e522f;       /* Tono de solapa para dar profundidad */
-    --fondo-tarjeta: #f3f6f1;      /* Blanco roto/crema orgánico de tu fondo */
-    --texto-oscuro: #2e3b24;       /* Verde oscuro para legibilidad impecable */
+    --verde-acuarela: #536d40;     
+    --verde-sobre: #465d36;        
+    --verde-solapa: #3e522f;       
     
-    --fuente-titulos: 'Caveat', cursive;       /* Nombres, Citas y Títulos grandes */
-    --fuente-cuerpo: 'Patrick Hand', cursive;   /* Fechas, Bloques de texto, Botones y Contador */
+    /* COLOR CORREGIDO: Empata perfectamente con el lienzo de los novios */
+    --fondo-tarjeta: #E1E1DC;     
+    
+    --texto-oscuro: #2e3b24;       
+    --fuente-titulos: 'Caveat', cursive;       
+    --fuente-cuerpo: 'Patrick Hand', cursive;   
 }
+
 
 /* AJUSTE DE CENTRADO DE ALTA GAMA */
 body {
-    background-color: #e6eae2; /* Fondo externo sutil que hace resaltar la tarjeta */
+    background-color: #ffffff; /* Fondo externo blanco puro para que el tarjetón gris resalte */
     color: var(--texto-oscuro);
     font-family: var(--fuente-cuerpo);
     text-align: center;
@@ -338,4 +341,96 @@ body {
 .pausado {
     animation-play-state: paused !important;
     opacity: 0.5;
+}
+/* ESTILO PARA LA IMAGEN DEL SAVE THE DATE DENTRO DE LA TARJETA */
+.seccion-ilustracion {
+    padding: 10px 0;
+    margin: 25px 0;
+}
+
+.img-ilustracion-boda {
+    width: 100%;
+    max-width: 340px; /* Tamaño ideal para que luzca el dibujo sin desbordar */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 4px;
+}
+/* TÍTULO PRINCIPAL: ESTILO MANUSCRITO */
+#tarjetaInvitacion h1 {
+    font-family: 'Caveat', cursive !important;
+    font-size: 3.5em;
+    font-weight: 600;
+    color: #536d40 !important;
+    letter-spacing: 1px;
+}
+/* TARJETAS DE IGLESIA Y CELEBRACIÓN */
+.tarjeta-ubicacion {
+    box-sizing: border-box;
+    width: calc(100% - 30px);
+    max-width: 390px;
+    margin: 25px auto;
+    padding: 28px 18px;
+    text-align: center;
+
+    /* Mismo gris cálido de la invitación */
+    background-color: #E1E1DC;
+    border: 1px solid #B8975A;
+    border-radius: 42px 42px 24px 24px;
+
+    color: #4A4A4A;
+}
+
+.tarjeta-ubicacion .icono-ubicacion {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    color: #B8975A;
+}
+
+.tarjeta-ubicacion h3 {
+    margin: 8px 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05em;
+    font-weight: normal;
+    letter-spacing: 1px;
+    color: #4A4A4A;
+}
+
+.tarjeta-ubicacion .hora-ubicacion {
+    margin: 8px 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25em;
+    color: #4A4A4A;
+}
+
+.tarjeta-ubicacion .nombre-lugar {
+    margin: 6px 0 22px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05em;
+    color: #4A4A4A;
+}
+
+.tarjeta-ubicacion .btn-ubicacion {
+    display: inline-block;
+    padding: 9px 24px;
+    margin-top: 5px;
+    border: 1.5px solid #B8975A;
+    border-radius: 30px;
+    background: transparent;
+    color: #B8975A;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.tarjeta-ubicacion .btn-ubicacion span {
+    margin-left: 5px;
+    font-size: 1.2em;
+}
+
+.tarjeta-ubicacion .btn-ubicacion:hover {
+    background-color: #B8975A;
+    color: #FFFFFF;
 }

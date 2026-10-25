@@ -22,8 +22,7 @@
     <!-- FUENTES DE GOOGLE FONTS -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-
+   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <!-- ENLACE A TU NUEVO ARCHIVO CSS APARTE -->
     <link rel="stylesheet" href="./styles.css?v=2">
 
@@ -75,6 +74,12 @@
     <div class="invitacion" id="tarjetaInvitacion">
         <h1>Tatiana &amp; Juan</h1>
         <p style="font-style: italic; font-size: 1.2em;">¡Nos casamos!</p>
+
+        <!-- SECCIÓN: ILUSTRACIÓN DE NOVIOS Y FECHA UNIFICADA -->
+        <div class="seccion seccion-ilustracion">
+            <!-- Aquí cargamos la imagen recortada del Save the Date -->
+            <img src="./novios.jpg" alt="Tatiana y Juan Ilustración" class="img-ilustracion-boda">
+
 <!-- CITA BÍBLICA -->
 <div style="font-style: italic; color: #777; max-width: 400px; margin: 30px auto; padding: 0 10px; line-height: 1.6; font-size: 0.95em;">
     "Y ahora permanecen la fe, la esperanza y el amor, estos tres; pero el mayor de ellos es el amor."
@@ -92,13 +97,7 @@
 
         <hr style="width: 50%; border: 0; border-top: 1px solid #b8975a; margin: 30px auto;">
 
- <!-- DÍA DE LA BODA -->
-<div class="seccion">
-    <p>Tenemos el placer de invitarte a celebrar nuestro amor el día:</p>
-
-    <div class="fecha">SÁBADO, 13 DE FEBRERO DE 2027</div>
-    <p>Hora: 21:00 hs.</p>
-
+ 
     <!-- BOTÓN AGREGAR AL CALENDARIO -->
     <a
         href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Boda+de+Tatiana+y+Juan&amp;dates=20270214T000000Z/20270214T030000Z&amp;details=¡Nos+encantaría+que+nos+acompañes+en+nuestro+gran+día!&amp;location=Parroquia+San+Blas+Loma+Pytã"
@@ -148,24 +147,39 @@
 <div class="seccion">
     <h3 style="color: #b8975a; letter-spacing: 1px;">Ubicaciones</h3>
 
-    <!-- BLOQUE IGLESIA -->
-    <div style="margin-bottom: 30px; background: #faf8f5; padding: 20px; border-radius: 6px; border: 1px solid #e6dfd3;">
-        <div style="font-size: 1.5em; margin-bottom: 5px;">⛪</div>
-        <p style="margin: 5px 0; font-weight: bold; color: #5c503c;">Ceremonia Religiosa</p>
-        <p style="margin: 5px 0; font-size: 0.9em;">Parroquia San Blas</p>
-        <p style="margin: 5px 0; font-size: 0.85em; color: #777; font-style: italic;">Hora: 18:30 hs.</p>
-        <button class="btn-regalo" style="padding: 8px 15px; font-size: 0.85em; margin-top: 10px;" onclick="abrirMapa('Iglesia')">📍 Ver Mapa de la Iglesia</button>
-    </div>
+<!-- BLOQUE IGLESIA -->
+<div class="tarjeta-ubicacion">
+    <div class="icono-ubicacion">⛪</div>
 
-    <!-- BLOQUE FIESTA -->
-    <div style="background: #faf8f5; padding: 20px; border-radius: 6px; border: 1px solid #e6dfd3;">
-        <div style="font-size: 1.5em; margin-bottom: 5px;">🥂</div>
-        <p style="margin: 5px 0; font-weight: bold; color: #5c503c;">Celebración</p>
-        <p style="margin: 5px 0; font-size: 0.9em;">Quinta Concordia</p>
-        <p style="margin: 5px 0; font-size: 0.85em; color: #777; font-style: italic;">Hora: 21:00 hs.</p>
-        <button class="btn-regalo" style="padding: 8px 15px; font-size: 0.85em; margin-top: 10px;" onclick="abrirMapa('Fiesta')">📍 Ver Mapa del Salón</button>
-    </div>
+    <h3>CEREMONIA RELIGIOSA</h3>
+
+    <p class="hora-ubicacion">18:30 hs.</p>
+    <p class="nombre-lugar">Parroquia San Blas</p>
+
+    <button
+        class="btn-ubicacion"
+        onclick="abrirMapa('Iglesia')">
+        UBICACIÓN <span>⌖</span>
+    </button>
 </div>
+
+<!-- BLOQUE FIESTA -->
+<div class="tarjeta-ubicacion">
+    <div class="icono-ubicacion">🥂</div>
+
+    <h3>CELEBRACIÓN</h3>
+
+    <p class="hora-ubicacion">21:00 hs.</p>
+    <p class="nombre-lugar">Quinta Concordia</p>
+
+    <button
+        class="btn-ubicacion"
+        onclick="abrirMapa('Fiesta')">
+        UBICACIÓN <span>⌖</span>
+    </button>
+</div>
+</div>
+
 
 <!-- ÚNICA VENTANA FLOTANTE INTELIGENTE (MODAL) -->
 <div id="modalMapa" class="modal-mapa" onclick="cerrarMapa()">
