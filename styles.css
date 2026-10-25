@@ -1,9 +1,23 @@
-/* AJUSTE DE CENTRADO DE ALTA GAMA (styles.css) */
+/* IMPORTACIÓN DE FUENTES DEL SAVE THE DATE DESDE GOOGLE FONTS */
+@import url('https://googleapis.com');
 
-body {
+/* VARIABLES DE IDENTIDAD VISUAL UNIFICADA */
+:root {
+    --verde-acuarela: #536d40;     /* Verde de los trazos e ilustraciones */
+    --verde-sobre: #465d36;        /* Tono un poco más oscuro para el cuerpo del sobre */
+    --verde-solapa: #3e522f;       /* Tono de solapa para dar profundidad */
+    --fondo-tarjeta: #f3f6f1;      /* Blanco roto/crema orgánico de tu fondo */
+    --texto-oscuro: #2e3b24;       /* Verde oscuro para legibilidad impecable */
     
-    background-color: #ffffff; 
-    color: #4a4a4a;
+    --fuente-titulos: 'Caveat', cursive;       /* Nombres, Citas y Títulos grandes */
+    --fuente-cuerpo: 'Patrick Hand', cursive;   /* Fechas, Bloques de texto, Botones y Contador */
+}
+
+/* AJUSTE DE CENTRADO DE ALTA GAMA */
+body {
+    background-color: #e6eae2; /* Fondo externo sutil que hace resaltar la tarjeta */
+    color: var(--texto-oscuro);
+    font-family: var(--fuente-cuerpo);
     text-align: center;
     padding: 0;
     margin: 0;
@@ -14,16 +28,17 @@ body {
     box-sizing: border-box;
     position: relative;
     overflow-x: hidden;
+    letter-spacing: 0.5px;
 }
 
 /* CONTENEDOR ESPECÍFICO PARA LA ENTRADA */
 #pantallaSobre {
     width: 100%;
     max-width: 400px;
-    min-height: 85vh; /* Ocupa casi toda la altura disponible del celular */
+    min-height: 85vh;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centra verticalmente los textos y el sobre */
+    justify-content: center;
     align-items: center;
     padding: 20px;
     box-sizing: border-box;
@@ -35,18 +50,17 @@ body {
     width: 100%;
     max-width: 360px;
     height: 210px;
-    background-color: #a3b899; 
-    border-radius: 4px;
-    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+    background-color: var(--verde-sobre); 
+    border-radius: 6px;
+    box-shadow: 0 12px 35px rgba(46, 59, 36, 0.2);
     cursor: pointer;
     transition: all 0.4s ease;
     position: relative;
-    margin: 30px auto; /* Añade un espacio equilibrado arriba y abajo del sobre */
+    margin: 30px auto;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 
 /* Solapa triangular superior del sobre impreso */
 .sobre-inicial::before {
@@ -56,10 +70,10 @@ body {
     left: 0;
     width: 0;
     height: 0;
-    border-left: 190px solid transparent;
-    border-right: 190px solid transparent;
-    border-top: 110px solid #92a888; /* Tono ligeramente más oscuro para dar profundidad */
-    border-radius: 4px 4px 0 0;
+    border-left: 180px solid transparent;
+    border-right: 180px solid transparent;
+    border-top: 110px solid var(--verde-solapa);
+    border-radius: 6px 6px 0 0;
 }
 
 @media(max-width: 400px) {
@@ -70,40 +84,42 @@ body {
     }
 }
 
-/* SELLO DE LACRE DORADO */
+/* SELLO DE LACRE CONSERVA SU TOQUE DORADO PREMIUM */
 .sello-lacre {
-    width: 55px;
-    height: 55px;
-    background: radial-gradient(circle, #e0c388 0%, #b8975a 100%);
+    width: 58px;
+    height: 58px;
+    background: radial-gradient(circle, #e6cca0 0%, #bc9c63 100%);
     border-radius: 50%;
     position: absolute;
     z-index: 10;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2), inset 0 2px 4px rgba(255,255,255,0.4);
-    border: 2px solid #a38249;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25), inset 0 2px 4px rgba(255,255,255,0.4);
+    border: 2px solid #9e7f47;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff4d0;
-    font-size: 1.4em;
+    color: #fff8e7;
+    font-family: var(--fuente-titulos);
+    font-size: 1.6em;
     font-weight: bold;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 .sobre-inicial:hover {
     transform: scale(1.03);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.22);
+    box-shadow: 0 15px 40px rgba(46, 59, 36, 0.35);
 }
 
-/* LA TARJETA DE INVITACIÓN EXPANSIBLE */
+/* LA TARJETA DE INVITACIÓN EXPANSIBLE DE TU SAVE THE DATE */
 .invitacion {
     display: none; 
     width: 100%;
     max-width: 500px;
-    background: white;
-    padding: 40px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    border: 1px solid #e6dfd3;
+    background: var(--fondo-tarjeta);
+    padding: 40px 24px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(83, 109, 64, 0.12);
+    /* Borde doble característico del contorno de tu dibujo */
+    border: 3px double var(--verde-acuarela);
     box-sizing: border-box;
     animation: aparecerSuave 0.8s ease forwards;
     z-index: 5;
@@ -116,38 +132,179 @@ body {
 }
 
 /* ELEMENTOS INTERNOS DE LA TARJETA */
-.fecha { font-size: 1.2em; font-weight: bold; margin: 20px 0; letter-spacing: 2px; color: #b8975a; }
-.seccion { margin: 35px 0; }
-.contador { display: flex; justify-content: center; gap: 12px; margin: 25px 0; }
-.tiempo-bloque { background: #faf8f5; border: 1px solid #e6dfd3; padding: 10px; border-radius: 6px; min-width: 55px; }
-.tiempo-numero { font-size: 1.6em; font-weight: bold; color: #b8975a; }
-.tiempo-etiqueta { font-size: 0.7em; text-transform: uppercase; color: #888; }
+.titulo-boda, h1, h2, h3, .cita-biblica {
+    font-family: var(--fuente-titulos);
+    color: var(--verde-acuarela);
+    font-weight: 700;
+}
 
-.galeria { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
-.galeria img { width: 100%; height: 140px; object-fit: cover; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+.fecha { 
+    font-family: var(--fuente-cuerpo);
+    font-size: 1.5em; 
+    font-weight: bold; 
+    margin: 20px 0; 
+    letter-spacing: 1px; 
+    color: var(--verde-acuarela); 
+}
 
-.btn-whatsapp { display: inline-block; background-color: #25d366; color: white; font-family: 'Arial', sans-serif; font-weight: bold; padding: 12px 25px; text-decoration: none; border-radius: 50px; margin-top: 15px; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2); }
-.btn-regalo { display: inline-block; background-color: #b8975a; color: white; font-family: 'Arial', sans-serif; font-weight: bold; padding: 12px 25px; text-decoration: none; border-radius: 4px; margin-top: 15px; }
-.btn-calendario { display: inline-block; background-color: #ffffff; color: #b8975a; font-family: 'Arial', sans-serif; font-size: 0.9em; font-weight: bold; padding: 10px 20px; text-decoration: none; border: 1px solid #b8975a; border-radius: 4px; margin-top: 15px; }
+.seccion { 
+    margin: 35px 0; 
+}
+
+/* CONTADOR REGRESIVO ESTILO ARTESANAL */
+.contador { 
+    display: flex; 
+    justify-content: center; 
+    gap: 12px; 
+    margin: 25px 0; 
+}
+
+.tiempo-bloque { 
+    background: #ffffff; 
+    border: 1px solid rgba(83, 109, 64, 0.2); 
+    padding: 12px 10px; 
+    border-radius: 8px; 
+    min-width: 60px; 
+    box-shadow: 0 2px 6px rgba(83, 109, 64, 0.04);
+}
+
+.tiempo-numero { 
+    font-size: 1.8em; 
+    font-weight: bold; 
+    color: var(--verde-acuarela); 
+    line-height: 1;
+}
+
+.tiempo-etiqueta { 
+    font-size: 0.8em; 
+    text-transform: uppercase; 
+    color: #6b7e5c; 
+    margin-top: 4px;
+}
+
+/* GALERÍA DE IMÁGENES */
+.galeria { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 12px; 
+    margin-top: 20px; 
+}
+
+.galeria img { 
+    width: 100%; 
+    height: 140px; 
+    object-fit: cover; 
+    border-radius: 8px; 
+    border: 1px solid rgba(83, 109, 64, 0.15);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.04); 
+}
+
+/* BOTONES DE ACCIÓN UNIFICADOS */
+.btn-whatsapp { 
+    display: inline-block; 
+    background-color: #25d366; 
+    color: white; 
+    font-family: var(--fuente-cuerpo);
+    font-size: 1.1em;
+    font-weight: bold; 
+    padding: 12px 25px; 
+    text-decoration: none; 
+    border-radius: 50px; 
+    margin-top: 15px; 
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2); 
+    transition: transform 0.2s ease;
+}
+
+.btn-regalo { 
+    display: inline-block; 
+    background-color: var(--verde-acuarela); 
+    color: white; 
+    font-family: var(--fuente-cuerpo);
+    font-size: 1.1em;
+    font-weight: bold; 
+    padding: 12px 25px; 
+    text-decoration: none; 
+    border-radius: 8px; 
+    margin-top: 15px; 
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-calendario { 
+    display: inline-block; 
+    background-color: #ffffff; 
+    color: var(--verde-acuarela); 
+    font-family: var(--fuente-cuerpo);
+    font-size: 1em; 
+    font-weight: bold; 
+    padding: 10px 20px; 
+    text-decoration: none; 
+    border: 1px solid var(--verde-acuarela); 
+    border-radius: 8px; 
+    margin-top: 15px; 
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-whatsapp:hover, .btn-regalo:hover, .btn-calendario:hover {
+    transform: scale(1.03);
+}
+
+.btn-regalo:hover { background-color: var(--verde-sobre); }
+.btn-calendario:hover { background-color: rgba(83, 109, 64, 0.05); }
 
 /* MODAL DEL MAPA */
-.modal-mapa { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); justify-content: center; align-items: center; }
-.modal-contenido { background-color: white; padding: 20px; border-radius: 12px; width: 90%; max-width: 450px; position: relative; }
-.cerrar-modal { position: absolute; top: 10px; right: 15px; font-size: 28px; font-weight: bold; color: #aaa; cursor: pointer; }
-.modal-contenido iframe { width: 100% !important; height: 300px !important; margin-top: 20px !important; border: 0; border-radius: 8px; }
+.modal-mapa { 
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(46, 59, 36, 0.4); 
+    backdrop-filter: blur(4px); 
+    justify-content: center; 
+    align-items: center; 
+}
 
+.modal-contenido { 
+    background-color: var(--fondo-tarjeta); 
+    padding: 20px; 
+    border-radius: 16px; 
+    width: 90%; 
+    max-width: 450px; 
+    position: relative; 
+    border: 2px solid var(--verde-acuarela);
+}
 
-/* DISEÑO DEL REPRODUCTOR FLOTANTE ELEGANTE */
+.cerrar-modal { 
+    position: absolute; 
+    top: 10px; 
+    right: 15px; 
+    font-size: 28px; 
+    font-weight: bold; 
+    color: var(--verde-acuarela); 
+    cursor: pointer; 
+}
+
+.modal-contenido iframe { 
+    width: 100% !important; 
+    height: 300px !important; 
+    margin-top: 20px !important; 
+    border: 0; 
+    border-radius: 8px; 
+}
+
+/* REPRODUCTOR FLOTANTE PREMIUM DE OASIS */
 .reproductor-flotante {
     position: fixed;
     bottom: 25px;
     right: 25px;
     width: 50px;
     height: 50px;
-    background: radial-gradient(circle, #fcfaf6 0%, #dfd5c3 100%);
-    border: 2px solid #b8975a;
+    background: radial-gradient(circle, #ffffff 0%, var(--fondo-tarjeta) 100%);
+    border: 2px solid var(--verde-acuarela);
     border-radius: 50%;
-    box-shadow: 0 4px 15px rgba(184, 151, 90, 0.3);
+    box-shadow: 0 4px 15px rgba(83, 109, 64, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -158,13 +315,14 @@ body {
 
 .reproductor-flotante:hover {
     transform: scale(1.08);
-    box-shadow: 0 6px 20px rgba(184, 151, 90, 0.4);
+    box-shadow: 0 6px 20px rgba(83, 109, 64, 0.45);
 }
 
 .icono-reproductor {
     font-size: 1.3em;
     user-select: none;
     display: inline-block;
+    color: var(--verde-acuarela);
 }
 
 /* ANIMACIÓN DE GIRO DE VINILO */
@@ -177,8 +335,7 @@ body {
     to { transform: rotate(360deg); }
 }
 
-/* ESTILO PAUSADO (Desactiva la animación) */
 .pausado {
     animation-play-state: paused !important;
-    opacity: 0.6;
+    opacity: 0.5;
 }
