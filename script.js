@@ -5,21 +5,57 @@ const mapaFiesta = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4383.40
 // FUNCIONA PARA MOSTRAR LA INVITACIÓN
 // FUNCIONA PARA MOSTRAR LA INVITACIÓN E INICIAR MÚSICA EN MÓVILES
 // FUNCIONA PARA MOSTRAR LA INVITACIÓN E INICIAR MÚSICA EN MÓVILES
+
+let sobreAbriendose = false;
+
 function mostrarInvitacion() {
-    // Oculta el sobre
-    document.getElementById('pantallaSobre').style.display = 'none';
-    document.getElementById('tarjetaInvitacion').style.display = 'block';
-    
-    // Captura el reproductor de audio
+    if (sobreAbriendose) return;
+
+    sobreAbriendose = true;
+
+    const sobre = document.getElementById('sobreCerrado');
+    const pantalla = document.getElementById('pantallaSobre');
+    const tarjeta = document.getElementById('tarjetaInvitacion');
     const musica = document.getElementById('musicaBoda');
-    if (musica) {
-        musica.volume = 1.0; 
-        musica.play().then(() => {
-            // Asegura que el icono gire al iniciar
-            document.getElementById('iconoMusica').classList.add('girar');
-            document.getElementById('iconoMusica').classList.remove('pausado');
-        }).catch(error => console.log("Autoplay interactivo activo."));
+    const icono = document.getElementById('iconoMusica');
+
+    if (!sobre || !pantalla || !tarjeta) {
+        sobreAbriendose = false;
+        return;
     }
+
+    // Inicia la animación del sobre
+    sobre.classList.add('abriendo');
+    sobre.disabled = true;
+
+    // Inicia la música desde la interacción del invitado
+    if (musica) {
+        musica.volume = 1.0;
+
+        const reproduccion = musica.play();
+
+        if (reproduccion && typeof reproduccion.then === 'function') {
+            reproduccion.then(() => {
+                if (icono) {
+                    icono.classList.add('girar');
+                    icono.classList.remove('pausado');
+                }
+            }).catch(() => {
+                console.log('El navegador no permitió iniciar la música.');
+            });
+        }
+    }
+
+    // Espera a que termine la apertura
+    const tiempoAnimacion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+    ).matches ? 50 : 1700;
+
+    setTimeout(() => {
+        pantalla.style.display = 'none';
+        tarjeta.style.display = 'block';
+        tarjeta.scrollIntoView({ block: 'start' });
+    }, tiempoAnimacion);
 }
 
 
@@ -46,24 +82,38 @@ function cerrarMapa() {
     document.getElementById('iframeMapa').src = "";
 }
 
-// CUENTA REGRESIVA EXACTA AL 13/02/2027
-const fechaBoda = new Date(2027, 1, 13, 18, 0, 0).getTime();
-setInterval(function() {
-    const ahora = new Date().getTime();
-    const distancia = fechaBoda - ahora;
 
-    const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-    const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+/* CUENTA REGRESIVA DE NUESTRA BODA */
 
-    if (document.getElementById("dias")) {
-        document.getElementById("dias").innerHTML = dias < 10 ? "0" + dias : dias;
-        document.getElementById("horas").innerHTML = horas < 10 ? "0" + horas : horas;
-        document.getElementById("minutos").innerHTML = minutes < 10 ? "0" + minutes : minutes;
-        document.getElementById("segundos").innerHTML = segundos < 10 ? "0" + segundos : segundos;
-    }
-}, 1000);
+// 13 de febrero de 2027, 18:30 - Paraguay
+const fechaBoda = new Date("2027-02-13T18:30:00-03:00").getTime();
+
+function actualizarContador() {
+    const ahora = Date.now();
+    const distancia = Math.max(0, fechaBoda - ahora);
+
+    const dias = Math.floor(distancia / 86400000);
+    const horas = Math.floor((distancia / 3600000) % 24);
+    const minutos = Math.floor((distancia / 60000) % 60);
+    const segundos = Math.floor((distancia / 1000) % 60);
+
+    const valores = { dias, horas, minutos, segundos };
+
+    Object.entries(valores).forEach(([id, valor]) => {
+        const elemento = document.getElementById(id);
+
+        if (elemento) {
+            elemento.textContent = String(valor).padStart(2, "0");
+        }
+    });
+}
+
+// Mostrar los números inmediatamente
+actualizarContador();
+
+// Actualizar cada segundo
+setInterval(actualizarContador, 1000);
+
 
 // FUNCIÓN PARA REPRODUCIR O PAUSAR CON EL BOTÓN ESTÉTICO
 function alternarMusica() {
@@ -79,4 +129,118 @@ function alternarMusica() {
         icono.classList.add('pausado');
         icono.innerText = "🔇";
     }
+}
+
+
+/* ANIMACIONES DE LAS SECCIONES AL DESPLAZARSE */
+
+function iniciarAnimacionesScroll() {
+    const secciones = document.querySelectorAll(
+        "#tarjetaInvitacion .seccion"
+    );
+
+    if (!("IntersectionObserver" in window)) {
+        return;
+    }
+
+    const observador = new IntersectionObserver(
+        (entradas, observer) => {
+            entradas.forEach(entrada => {
+                if (entrada.isIntersecting) {
+                    entrada.target.classList.add("visible");
+                    observer.unobserve(entrada.target);
+                }
+            });
+        },
+        {
+            threshold: 0.08,
+            rootMargin: "0px 0px -20px 0px"
+        }
+    );
+
+    secciones.forEach(seccion => {
+        seccion.classList.add("animacion-scroll");
+        observador.observe(seccion);
+    });
+}
+
+document.addEventListener(
+    "DOMContentLoaded",
+    iniciarAnimacionesScroll
+);
+
+
+/* ABRIR Y CERRAR FOTOGRAFÍAS */
+
+function abrirFoto(ruta) {
+    const visor = document.getElementById('visorFotos');
+    const imagen = document.getElementById('fotoAmpliada');
+
+    imagen.src = ruta;
+    visor.classList.add('activo');
+    visor.setAttribute('aria-hidden', 'false');
+
+    document.body.style.overflow = 'hidden';
+}
+
+
+function cerrarFoto() {
+    const visor = document.getElementById('visorFotos');
+    const imagen = document.getElementById('fotoAmpliada');
+
+    // Quitar el foco antes de ocultar el visor
+    if (visor.contains(document.activeElement)) {
+        document.activeElement.blur();
+    }
+
+    visor.classList.remove('activo');
+    visor.setAttribute('aria-hidden', 'true');
+    imagen.src = '';
+
+    document.body.style.overflow = '';
+}
+
+
+// Cerrar con la tecla Escape
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        cerrarFoto();
+    }
+});
+
+
+
+async function copiarAliasRegalos() {
+    const alias = document.getElementById('aliasRegalos');
+    const mensaje = document.getElementById('mensajeAlias');
+
+    if (!alias || !mensaje) return;
+
+    try {
+        await navigator.clipboard.writeText(alias.textContent.trim());
+        mensaje.textContent = '¡Alias copiado!';
+    } catch (error) {
+        mensaje.textContent = 'No se pudo copiar. Seleccioná el alias manualmente.';
+    }
+}
+
+
+// ==================================
+// CONFIRMACIÓN POR WHATSAPP
+// ==================================
+
+const numeroConfirmacion = "595XXXXXXXXX";
+
+const mensajeConfirmacion =
+    "¡Hola! Confirmo mi asistencia a la boda de Tatiana y Juan el 13 de febrero de 2027.";
+
+const botonConfirmacion =
+    document.getElementById("botonConfirmacion");
+
+if (botonConfirmacion) {
+    botonConfirmacion.href =
+        "https://wa.me/" +
+        numeroConfirmacion +
+        "?text=" +
+        encodeURIComponent(mensajeConfirmacion);
 }

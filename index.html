@@ -55,21 +55,49 @@
 </head>
 <body>
 
-   <!-- CONTENEDOR VISTA INICIAL (SOBRE REESTILIZADO) -->
+ 
+
+
+<!-- PANTALLA INICIAL: SOBRE ANIMADO -->
 <div id="pantallaSobre">
 
-        <div class="texto-sobre-titulo">Tatiana &amp; Juan</div>
-        <div class="texto-sobre-sub">Nuestra Boda</div>
-        
-        <!-- SOBRE CON SELLO -->
-        <div class="sobre-inicial" id="sobreCerrado" onclick="mostrarInvitacion()">
-            <div class="sello-lacre">T&amp;J</div>
+    <button
+        id="sobreCerrado"
+        class="sobre-animado"
+        type="button"
+        onclick="mostrarInvitacion()"
+        aria-label="Abrir invitación de Tatiana y Juan">
+
+        <!-- Tarjeta que sale del sobre -->
+        <div class="carta-interior">
+            <span class="carta-adorno">✦</span>
+            <span class="carta-nombres">Tatiana &amp; Juan</span>
+            <span class="carta-subtitulo">¡Nos casamos!</span>
+            <span class="carta-fecha">13 · 02 · 2027</span>
         </div>
-        
-        <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.9em; color: #888; margin-top: 25px;">
-            De clic en el sobre para ir a nuestra invitación
-        </p>
-    </div>
+
+        <!-- Parte trasera del sobre -->
+        <div class="sobre-fondo"></div>
+
+        <!-- Solapa que se levanta -->
+        <div class="sobre-solapa"></div>
+
+        <!-- Parte delantera -->
+        <div class="sobre-frente"></div>
+
+        <!-- Sello -->
+        <div class="sobre-sello">T&amp;J</div>
+
+        <span class="sobre-indicacion">
+            Tocá para abrir nuestra invitación
+        </span>
+
+    </button>
+
+</div>
+
+
+
     <!-- TARJETA DE INVITACIÓN (CONTENIDO GENERAL) -->
     <div class="invitacion" id="tarjetaInvitacion">
         <h1>Tatiana &amp; Juan</h1>
@@ -78,21 +106,41 @@
         <!-- SECCIÓN: ILUSTRACIÓN DE NOVIOS Y FECHA UNIFICADA -->
         <div class="seccion seccion-ilustracion">
             <!-- Aquí cargamos la imagen recortada del Save the Date -->
-            <img src="./novios.jpg" alt="Tatiana y Juan Ilustración" class="img-ilustracion-boda">
+           <img src="./novios-solos.png"
+     alt="Ilustración de Tatiana y Juan"
+     class="img-ilustracion-boda">
 
 <!-- CITA BÍBLICA -->
-<div style="font-style: italic; color: #777; max-width: 400px; margin: 30px auto; padding: 0 10px; line-height: 1.6; font-size: 0.95em;">
-    "Y ahora permanecen la fe, la esperanza y el amor, estos tres; pero el mayor de ellos es el amor."
-    <span style="display: block; font-weight: bold; color: #b8975a; margin-top: 5px; font-size: 0.85em; text-transform: uppercase; letter-spacing: 1px;">1 Corintios 13:13</span>
+
+<!-- CITA BÍBLICA -->
+<div class="cita-biblica">
+    <p>
+        "Y ahora permanecen la fe, la esperanza y el amor,
+        estos tres; pero el mayor de ellos es el amor."
+    </p>
+    <span style="display:block; font-weight:bold;
+                 color:#b8975a; margin-top:5px;
+                 font-size:0.85em;">
+        1 CORINTIOS 13:13
+    </span>
 </div>
 
+
         <!-- SECCIÓN DE PRESENTACIÓN DEL TEMA MUSICAL -->
-        <div style="margin: 20px auto; padding: 10px; max-width: 280px; background-color: #faf8f5; border-radius: 6px; border: 1px dashed #e6dfd3;">
-            <p style="margin: 0; font-size: 0.75em; text-transform: uppercase; letter-spacing: 2px; color: #b8975a; font-weight: bold;">Nuestro Tema</p>
-            <p style="margin: 5px 0 0 0; font-family: 'Playfair Display', serif; font-size: 0.95em; color: #4a4a4a; font-style: italic;">
-                "Slide Away" — Oasis
-            </p>
-        </div>
+       
+<!-- SECCIÓN DE PRESENTACIÓN DEL TEMA MUSICAL -->
+<div class="nuestro-tema">
+    <div class="adorno-musical">✦</div>
+
+    <p class="titulo-tema">NUESTRO TEMA</p>
+
+    <p class="nombre-cancion">
+        "Slide Away" — Oasis
+    </p>
+
+    <div class="linea-musical"></div>
+</div>
+
 
 
         <hr style="width: 50%; border: 0; border-top: 1px solid #b8975a; margin: 30px auto;">
@@ -108,16 +156,41 @@
     </a>
 </div>
 
-        <!-- RELOJ CUENTA REGRESIVA -->
-        <div class="seccion">
-            <h3>¿Cuánto falta?</h3>
-            <div class="contador">
-                <div class="tiempo-bloque"><div id="dias" class="tiempo-numero">00</div><div class="tiempo-etiqueta">Días</div></div>
-                <div class="tiempo-bloque"><div id="horas" class="tiempo-numero">00</div><div class="tiempo-etiqueta">Hs</div></div>
-                <div class="tiempo-bloque"><div id="minutos" class="tiempo-numero">00</div><div class="tiempo-etiqueta">Min</div></div>
-                <div class="tiempo-bloque"><div id="segundos" class="tiempo-numero">00</div><div class="tiempo-etiqueta">Seg</div></div>
-            </div>
+        
+<!-- RELOJ CUENTA REGRESIVA -->
+<div class="seccion seccion-cuenta-regresiva">
+
+    <div class="adorno-contador">▦</div>
+
+    <h3 class="titulo-contador">
+        FALTA PARA NUESTRO GRAN DÍA
+    </h3>
+
+    <div class="contador contador-elegante">
+
+        <div class="tiempo-bloque">
+            <div id="dias" class="tiempo-numero">00</div>
+            <div class="tiempo-etiqueta">DÍAS</div>
         </div>
+
+        <div class="tiempo-bloque">
+            <div id="horas" class="tiempo-numero">00</div>
+            <div class="tiempo-etiqueta">HORAS</div>
+        </div>
+
+        <div class="tiempo-bloque">
+            <div id="minutos" class="tiempo-numero">00</div>
+            <div class="tiempo-etiqueta">MINUTOS</div>
+        </div>
+
+        <div class="tiempo-bloque">
+            <div id="segundos" class="tiempo-numero">00</div>
+            <div class="tiempo-etiqueta">SEGUNDOS</div>
+        </div>
+
+    </div>
+</div>
+
 
                 <!-- REPRODUCTOR DE MÚSICA OCULTO CON BOTÓN FLOTANTE ESTÉTICO -->
         <audio id="musicaBoda" loop>
@@ -133,52 +206,131 @@
 
 
         <!-- GALERÍA DE FOTOS -->
-        <div class="seccion">
-            <h3>Nuestros Momentos</h3>
-            <div class="galeria">
-                <img src="https://picsum.photos" alt="Foto Novios 1">
-                <img src="https://picsum.photos" alt="Foto Novios 2">
-                <img src="https://picsum.photos" alt="Foto Novios 3">
-                <img src="https://picsum.photos" alt="Foto Novios 4">
-            </div>
-        </div>
+      
+<!-- GALERÍA DE FOTOS -->
+<div class="seccion seccion-momentos">
+
+    <h3 class="titulo-momentos">Nuestros Momentos</h3>
+
+    <div class="adorno-momentos">
+        <span>♡</span>
+    </div>
+
+    <div class="galeria galeria-elegante">
+        <img src="./5U9A9651.JPG.jpeg" alt="Nuestro momento 1"
+             onclick="abrirFoto(this.src)" loading="lazy">
+
+        <img src="./5U9A9667.JPG.jpeg" alt="Nuestro momento 2"
+             onclick="abrirFoto(this.src)" loading="lazy">
+
+        <img src="./5U9A9677.JPG.jpeg" alt="Nuestro momento 3"
+             onclick="abrirFoto(this.src)" loading="lazy">
+
+        <img src="./5U9A9729.JPG.jpeg" alt="Nuestro momento 4"
+             onclick="abrirFoto(this.src)" loading="lazy">
+    </div>
+</div>
+
+<!-- VISOR DE FOTOGRAFÍAS -->
+
+
 
                <!-- SECCIÓN: DÓNDE Y CUÁNDO -->
-<div class="seccion">
-    <h3 style="color: #b8975a; letter-spacing: 1px;">Ubicaciones</h3>
 
-<!-- BLOQUE IGLESIA -->
-<div class="tarjeta-ubicacion">
-    <div class="icono-ubicacion">⛪</div>
+<!-- SECCIÓN: DÓNDE Y CUÁNDO -->
+<div class="seccion ubicaciones-elegantes">
 
-    <h3>CEREMONIA RELIGIOSA</h3>
+    <div class="adorno-ubicaciones">✦</div>
+    <h3 class="titulo-ubicaciones-elegante">Ubicaciones</h3>
 
-    <p class="hora-ubicacion">18:30 hs.</p>
-    <p class="nombre-lugar">Parroquia San Blas</p>
+    <!-- CEREMONIA RELIGIOSA -->
+    <div class="evento-boda">
 
-    <button
-        class="btn-ubicacion"
-        onclick="abrirMapa('Iglesia')">
-        UBICACIÓN <span>⌖</span>
-    </button>
+        <div class="evento-icono">
+            <svg viewBox="0 0 64 64" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true">
+                <path d="M8 30 L32 10 L56 30"/>
+                <path d="M14 27 V56 H50 V27"/>
+                <path d="M25 56 V40 Q32 31 39 40 V56"/>
+                <path d="M22 31 H27 V36 H22 Z"/>
+                <path d="M37 31 H42 V36 H37 Z"/>
+                <path d="M32 10 V2 M26 6 H38"/>
+                <path d="M7 57 H57"/>
+            </svg>
+        </div>
+
+        <div class="evento-info">
+            <h4>IGLESIA</h4>
+            <p class="evento-lugar">
+                Parroquia San Blas<br>
+                (Loma Pytã)
+            </p>
+
+            <p class="evento-detalle">
+                <span>▦</span>
+                Sábado, 13 de febrero de 2027
+            </p>
+
+            <p class="evento-detalle">
+                <span>◷</span>
+                18:30 hs.
+            </p>
+        </div>
+
+        <button class="evento-mapa"
+                onclick="abrirMapa('Iglesia')">
+            <span>⌖</span> Ver mapa
+        </button>
+
+    </div>
+
+    <!-- FIESTA -->
+    <div class="evento-boda">
+
+        <div class="evento-icono">
+            <svg viewBox="0 0 64 64" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true">
+                <path d="M10 8 H27 L25 25 Q23 34 18 36 L15 55"/>
+                <path d="M10 8 L12 25 Q14 34 18 36"/>
+                <path d="M7 55 H23"/>
+                <path d="M37 8 H54 L52 25 Q50 34 46 36 L43 55"/>
+                <path d="M37 8 L39 25 Q41 34 46 36"/>
+                <path d="M35 55 H51"/>
+                <path d="M29 18 L35 14"/>
+                <path d="M29 24 L35 28"/>
+            </svg>
+        </div>
+
+        <div class="evento-info">
+            <h4>FIESTA</h4>
+            <p class="evento-lugar">
+                Quinta Concordia
+            </p>
+
+            <p class="evento-detalle">
+                <span>▦</span>
+                Sábado, 13 de febrero de 2027
+            </p>
+
+            <p class="evento-detalle">
+                <span>◷</span>
+                21:00 hs.
+            </p>
+        </div>
+
+        <button class="evento-mapa"
+                onclick="abrirMapa('Fiesta')">
+            <span>⌖</span> Ver mapa
+        </button>
+
+    </div>
+
 </div>
 
-<!-- BLOQUE FIESTA -->
-<div class="tarjeta-ubicacion">
-    <div class="icono-ubicacion">🥂</div>
-
-    <h3>CELEBRACIÓN</h3>
-
-    <p class="hora-ubicacion">21:00 hs.</p>
-    <p class="nombre-lugar">Quinta Concordia</p>
-
-    <button
-        class="btn-ubicacion"
-        onclick="abrirMapa('Fiesta')">
-        UBICACIÓN <span>⌖</span>
-    </button>
-</div>
-</div>
 
 
 <!-- ÚNICA VENTANA FLOTANTE INTELIGENTE (MODAL) -->
@@ -195,37 +347,145 @@
 
 
         <!-- NUEVA SECCIÓN: CÓDIGO DE VESTIMENTA (DRESS CODE) -->
-        <div class="seccion" style="background: #fdfbf7; border: 1px solid #e6dfd3; padding: 30px 20px; border-radius: 8px; max-width: 450px; margin: 40px auto;">
-            <div style="font-size: 2.2em; color: #b8975a; margin-bottom: 10px;">✨</div>
-            <h3 style="margin-top: 0; color: #5c503c; letter-spacing: 1px;">Código de Vestimenta</h3>
-            <p style="font-size: 1.2em; font-weight: bold; color: #b8975a; margin: 10px 0;">Elegante Formal</p>
-            <p style="font-size: 0.9em; color: #777; font-style: italic; margin: 0;">
-                Queremos verte brillar. Agradecemos asistir con traje oscuro los caballeros y vestido largo las damas.
-            </p>
-        </div>
+       <!-- SECCIÓN: CÓDIGO DE VESTIMENTA -->
+<div class="seccion vestimenta-elegante">
+
+    <div class="adorno-vestimenta">✦</div>
+
+    <h3 class="titulo-vestimenta">
+        Código de Vestimenta
+    </h3>
+
+    <div class="linea-vestimenta"></div>
+
+    <p class="tipo-vestimenta">
+        Elegante Formal
+    </p>
+
+    <p class="descripcion-vestimenta">
+        Queremos verte brillar. Agradecemos asistir con traje
+        oscuro los caballeros y vestido largo las damas.
+    </p>
+
+    <div class="adorno-final-vestimenta">✦</div>
+
+</div>
 
         <!-- REGALOS -->
-        <div class="seccion">
-            <h3>Mesa de Regalos</h3>
-            <p style="margin-bottom: 20px;">Tu presencia es nuestro mejor regalo, pero si deseas hacernos un detalle, puedes usar los siguientes medios:</p>
-            <div style="background: #fdfbf7; border: 1px dashed #b8975a; padding: 20px; border-radius: 6px; text-align: left; max-width: 400px; margin: 0 auto 20px auto;">
-                <p style="margin: 5px 0;"><strong>Banco:</strong> Nombre del Banco</p>
-                <p style="margin: 5px 0;"><strong>Cuenta / CBU:</strong> 123456789012345678</p>
-                <p style="margin: 5px 0;"><strong>Alias:</strong> boda.tatiana.juan</p>
-                <p style="margin: 5px 0;"><strong>Titular:</strong> Nombre Completo</p>
-            </div>
-            <a href="https://tuestilolista.com" class="btn-regalo" target="_blank">Ver Lista de Regalos Online</a>
+
+<!-- REGALOS -->
+<div class="seccion regalos-elegantes">
+
+    <div class="adorno-regalos">✦</div>
+
+    <h3 class="titulo-regalos">Mesa de Regalos</h3>
+
+    <p class="texto-regalos">
+        Tu presencia es nuestro mejor regalo, pero si deseas
+        hacernos un detalle, puedes usar los siguientes medios:
+    </p>
+
+    <div class="datos-regalos">
+
+        <div class="detalle-bancario">
+            <span>Banco</span>
+            <strong>Nombre del Banco</strong>
         </div>
 
-        <!-- CONFIRMACIÓN -->
-        <div class="seccion">
-            <h3>¿Nos acompañas?</h3>
-            <p>Por favor, confirma tu asistencia antes del 1 de Diciembre presionando el siguiente botón:</p>
-            <a href="https://wa.me¡Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Tatiana%20y%20Juan." class="btn-whatsapp" target="_blank">
-                Confirmar Asistencia por WhatsApp
-            </a>
+        <div class="detalle-bancario">
+            <span>Cuenta / CBU</span>
+            <strong>123456789012345678</strong>
         </div>
+
+        <div class="detalle-bancario">
+            <span>Alias</span>
+            <strong id="aliasRegalos">boda.tatiana.juan</strong>
+        </div>
+
+        <div class="detalle-bancario">
+            <span>Titular</span>
+            <strong>Nombre Completo</strong>
+        </div>
+
+        <button class="btn-copiar-alias"
+                type="button"
+                onclick="copiarAliasRegalos()">
+            Copiar alias
+        </button>
+
+        <p id="mensajeAlias" class="mensaje-alias"
+           aria-live="polite"></p>
+
     </div>
+
+    <a href="https://tuestilolista.com"
+       class="btn-lista-regalos"
+       target="_blank"
+       rel="noopener noreferrer">
+        Ver Lista de Regalos Online
+    </a>
+
+</div>
+
+
+    
+<!-- CONFIRMACIÓN -->
+<div class="seccion confirmacion-elegante">
+
+    <div class="adorno-confirmacion">✦</div>
+
+    <h3 class="titulo-confirmacion">
+        ¿Nos acompañás?
+    </h3>
+
+    <p class="texto-confirmacion">
+        Nos encantaría compartir este día tan especial
+        con vos.
+    </p>
+
+    <p class="fecha-confirmacion">
+        Confirmá tu asistencia antes del
+        <strong>1 de diciembre de 2026</strong>.
+    </p>
+
+    <a
+        id="botonConfirmacion"
+        href="#"
+        class="btn-confirmacion"
+        target="_blank"
+        rel="noopener noreferrer">
+        Confirmar asistencia por WhatsApp
+    </a>
+
+    <p class="detalle-confirmacion">
+        ¡Esperamos contar con tu presencia!
+    </p>
+
+</div>
+
+
+
+<!-- VISOR DE FOTOGRAFÍAS EN PANTALLA COMPLETA -->
+<div id="visorFotos"
+     class="visor-fotos"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Fotografía ampliada"
+     aria-hidden="true"
+     onclick="cerrarFoto()">
+
+    <button class="cerrar-foto"
+            onclick="cerrarFoto()"
+            aria-label="Cerrar fotografía">
+        &times;
+    </button>
+
+    <img id="fotoAmpliada"
+         src=""
+         alt="Fotografía ampliada"
+         onclick="event.stopPropagation()">
+</div>
+
 
     <!-- ENLACE AL ARCHIVO JAVASCRIPT EXTERNO -->
     <script src="script.js"></script>
