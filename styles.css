@@ -2484,3 +2484,35 @@ body > .visor-fotos img {
         background-position: center top;
     }
 }
+
+
+/* PRUEBA DE PORTADA EN CELULARES */
+@media (max-width: 480px) {
+    #pantallaSobre {
+        width: 100%;
+        min-height: 100dvh;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: hidden;
+    }
+
+    #pantallaSobre .portada-boda {
+        display: block;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        transform: none !important;
+    }
+
+    #pantallaSobre .portada-boda img {
+        display: block;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        max-height: 100dvh !important;
+        object-fit: contain;
+        transform: none !important;
+    }
+}
