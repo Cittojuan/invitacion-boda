@@ -6,57 +6,87 @@ const mapaFiesta = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4383.40
 // FUNCIONA PARA MOSTRAR LA INVITACIÓN E INICIAR MÚSICA EN MÓVILES
 // FUNCIONA PARA MOSTRAR LA INVITACIÓN E INICIAR MÚSICA EN MÓVILES
 
-let sobreAbriendose = false;
+// let sobreAbriendose = false;
+
+
 
 function mostrarInvitacion() {
-    if (sobreAbriendose) return;
+    console.log("Se hizo clic en la portada");
 
-    sobreAbriendose = true;
-
-    const sobre = document.getElementById('sobreCerrado');
-    const pantalla = document.getElementById('pantallaSobre');
-    const tarjeta = document.getElementById('tarjetaInvitacion');
+    const portada = document.getElementById('pantallaSobre');
+    const invitacion = document.getElementById('tarjetaInvitacion');
     const musica = document.getElementById('musicaBoda');
     const icono = document.getElementById('iconoMusica');
 
-    if (!sobre || !pantalla || !tarjeta) {
-        sobreAbriendose = false;
+    if (!portada || !invitacion) {
+        console.error("No se encontró la portada o la invitación");
         return;
     }
 
-    // Inicia la animación del sobre
-    sobre.classList.add('abriendo');
-    sobre.disabled = true;
+    // Ocultar la portada
+    portada.style.display = 'none';
 
-    // Inicia la música desde la interacción del invitado
+    // Mostrar la invitación
+    invitacion.style.display = 'block';
+
+    // Volver al inicio de la página
+    window.scrollTo(0, 0);
+
+    // Iniciar la música
     if (musica) {
         musica.volume = 1.0;
 
         const reproduccion = musica.play();
 
-        if (reproduccion && typeof reproduccion.then === 'function') {
+        if (reproduccion) {
             reproduccion.then(() => {
+                console.log("Música iniciada correctamente");
+
                 if (icono) {
                     icono.classList.add('girar');
                     icono.classList.remove('pausado');
                 }
-            }).catch(() => {
-                console.log('El navegador no permitió iniciar la música.');
+            }).catch(error => {
+                console.log("El navegador bloqueó la reproducción:", error);
             });
         }
     }
-
-    // Espera a que termine la apertura
-    const tiempoAnimacion = window.matchMedia(
-        '(prefers-reduced-motion: reduce)'
-    ).matches ? 50 : 1700;
-
-    setTimeout(() => {
-        pantalla.style.display = 'none';
-        tarjeta.style.display = 'block';
-        tarjeta.scrollIntoView({ block: 'start' });
-    }, tiempoAnimacion);
 }
+
+
+//     // Inicia la animación del sobre
+//     sobre.classList.add('abriendo');
+//     sobre.disabled = true;
+
+//     // Inicia la música desde la interacción del invitado
+//     if (musica) {
+//         musica.volume = 1.0;
+
+//         const reproduccion = musica.play();
+
+//         if (reproduccion && typeof reproduccion.then === 'function') {
+//             reproduccion.then(() => {
+//                 if (icono) {
+//                     icono.classList.add('girar');
+//                     icono.classList.remove('pausado');
+//                 }
+//             }).catch(() => {
+//                 console.log('El navegador no permitió iniciar la música.');
+//             });
+//         }
+//     }
+
+//     // Espera a que termine la apertura
+//     const tiempoAnimacion = window.matchMedia(
+//         '(prefers-reduced-motion: reduce)'
+//     ).matches ? 50 : 1700;
+
+//     setTimeout(() => {
+//         pantalla.style.display = 'none';
+//         tarjeta.style.display = 'block';
+//         tarjeta.scrollIntoView({ block: 'start' });
+//     }, tiempoAnimacion);
+// }
 
 
 
@@ -172,33 +202,77 @@ document.addEventListener(
 
 /* ABRIR Y CERRAR FOTOGRAFÍAS */
 
+
+
 function abrirFoto(ruta) {
+    console.log("Se hizo clic en la fotografía:", ruta);
+
     const visor = document.getElementById('visorFotos');
     const imagen = document.getElementById('fotoAmpliada');
 
+    if (!visor || !imagen) {
+        console.error('No se encontró el visor o la imagen.');
+        return;
+    }
+
+    // Mover el visor fuera de la invitación
+    // para que ocupe toda la pantalla
+    if (visor.parentElement !== document.body) {
+        document.body.appendChild(visor);
+    }
+
+    // Comprobar si la fotografía carga correctamente
+    imagen.onload = function() {
+        console.log('Fotografía cargada correctamente:', ruta);
+    };
+
+    imagen.onerror = function() {
+        console.error('Error al cargar la fotografía:', ruta);
+    };
+
+    // Mostrar la fotografía seleccionada
     imagen.src = ruta;
+
+    // Activar el visor
     visor.classList.add('activo');
     visor.setAttribute('aria-hidden', 'false');
 
+    // Evitar que la página se desplace
     document.body.style.overflow = 'hidden';
 }
+
+
+
 
 
 function cerrarFoto() {
     const visor = document.getElementById('visorFotos');
     const imagen = document.getElementById('fotoAmpliada');
 
-    // Quitar el foco antes de ocultar el visor
+    if (!visor || !imagen) {
+        return;
+    }
+
+    // Quitar el foco antes de cerrar
     if (visor.contains(document.activeElement)) {
         document.activeElement.blur();
     }
 
+    // Ocultar el visor
     visor.classList.remove('activo');
     visor.setAttribute('aria-hidden', 'true');
-    imagen.src = '';
 
+    // Detener el manejo de eventos de carga
+    imagen.onload = null;
+    imagen.onerror = null;
+
+    // Limpiar la fotografía
+    imagen.removeAttribute('src');
+
+    // Permitir nuevamente el desplazamiento
     document.body.style.overflow = '';
 }
+
 
 
 // Cerrar con la tecla Escape

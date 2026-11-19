@@ -59,6 +59,9 @@
 
 
 <!-- PANTALLA INICIAL: SOBRE ANIMADO -->
+
+
+<!--
 <div id="pantallaSobre">
 
     <button
@@ -68,7 +71,6 @@
         onclick="mostrarInvitacion()"
         aria-label="Abrir invitación de Tatiana y Juan">
 
-        <!-- Tarjeta que sale del sobre -->
         <div class="carta-interior">
             <span class="carta-adorno">✦</span>
             <span class="carta-nombres">Tatiana &amp; Juan</span>
@@ -76,16 +78,12 @@
             <span class="carta-fecha">13 · 02 · 2027</span>
         </div>
 
-        <!-- Parte trasera del sobre -->
         <div class="sobre-fondo"></div>
 
-        <!-- Solapa que se levanta -->
         <div class="sobre-solapa"></div>
 
-        <!-- Parte delantera -->
         <div class="sobre-frente"></div>
 
-        <!-- Sello -->
         <div class="sobre-sello">T&amp;J</div>
 
         <span class="sobre-indicacion">
@@ -95,6 +93,20 @@
     </button>
 
 </div>
+-->
+
+<!-- NUEVA PORTADA CON IMAGEN -->
+<div id="pantallaSobre">
+    <button class="portada-boda"
+            type="button"
+            onclick="mostrarInvitacion()">
+
+        <img src="./portada-final.png"
+             alt="Invitación de Tatiana y Juan">
+
+    </button>
+</div>
+
 
 
 
@@ -265,7 +277,6 @@
             <h4>IGLESIA</h4>
             <p class="evento-lugar">
                 Parroquia San Blas<br>
-                (Loma Pytã)
             </p>
 
             <p class="evento-detalle">
@@ -308,7 +319,7 @@
         <div class="evento-info">
             <h4>FIESTA</h4>
             <p class="evento-lugar">
-                Quinta Concordia
+                Quincho Concordia
             </p>
 
             <p class="evento-detalle">
@@ -465,7 +476,12 @@
 
 
 
-<!-- VISOR DE FOTOGRAFÍAS EN PANTALLA COMPLETA -->
+
+
+
+    <!-- ENLACE AL ARCHIVO JAVASCRIPT EXTERNO -->
+    <script src="script.js"></script>
+    <!-- VISOR DE FOTOGRAFÍAS EN PANTALLA COMPLETA -->
 <div id="visorFotos"
      class="visor-fotos"
      role="dialog"
@@ -485,9 +501,5 @@
          alt="Fotografía ampliada"
          onclick="event.stopPropagation()">
 </div>
-
-
-    <!-- ENLACE AL ARCHIVO JAVASCRIPT EXTERNO -->
-    <script src="script.js"></script>
 </body>
 </html>

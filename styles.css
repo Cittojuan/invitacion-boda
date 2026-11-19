@@ -41,22 +41,24 @@ body {
    SOBRE INICIAL - DISEÑO BOTÁNICO
    ========================================== */
 
-#pantallaSobre {
+
+/* #pantallaSobre {
     width: 100%;
     min-height: 100vh;
     min-height: 100dvh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 12px;
+    padding: 0;
     box-sizing: border-box;
-    margin: auto;
+    margin: 0;
     background: #F4F0E7;
 }
 
+
 /* Sobre grande vertical */
 
-.sobre-inicial {
+/* .sobre-inicial {
     position: relative;
     width: 100%;
     max-width: 440px;
@@ -79,7 +81,7 @@ body {
     justify-content: center;
 
     transition: transform 0.4s ease;
-}
+} */ 
 
 /* Solapa superior */
 
@@ -257,7 +259,7 @@ body {
    
 
 background-color: #E1E1DC;
-background-image: url("./invitacion.png");
+background-image: url("./prueba.png");
 background-repeat: repeat-y;
 background-position: center top;
 background-size: 100% auto;
@@ -1738,7 +1740,7 @@ body > .visor-fotos img {
 
 /* SOBRE INICIAL CON IMAGEN COMPLETA */
 
-#pantallaSobre {
+/* #pantallaSobre {
     width: 100%;
     min-height: 100vh;
     min-height: 100dvh;
@@ -1772,7 +1774,7 @@ body > .visor-fotos img {
     object-fit: contain;
     border-radius: 14px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-}
+} */
 
 
 /* SOBRE GRANDE PARA CELULARES */
@@ -2279,4 +2281,206 @@ body > .visor-fotos img {
 
 #pantallaSobre .sobre-animado::before {
     content: none;
+}
+
+
+/* VISOR DE FOTOGRAFÍAS - AJUSTE MÓVIL */
+
+#visorFotos.activo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#visorFotos #fotoAmpliada {
+    display: block;
+    position: relative;
+    z-index: 1;
+    max-width: 95%;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+
+/* CENTRAR FOTOGRAFÍAS EN EL VISOR */
+
+#visorFotos {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100dvh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#visorFotos.activo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#visorFotos #fotoAmpliada {
+    max-width: 95%;
+    max-height: 85dvh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+
+/* ========================================
+   PORTADA ORIGINAL - CORRECCIÓN DEFINITIVA
+   ======================================== */
+
+
+/* PORTADA FINAL - TATIANA & JUAN */
+
+#pantallaSobre {
+    width: 100%;
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background: #F4F0E7;
+}
+
+#pantallaSobre .portada-boda {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 430px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+#pantallaSobre .portada-boda img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 100dvh;
+    object-fit: contain;
+    border-radius: 0;
+    transform: none !important;
+}
+
+
+
+/* PRUEBA: EVITAR RECORTE DE PORTADA */
+
+/* #pantallaSobre {
+    overflow: visible !important;
+}
+
+#pantallaSobre .portada-boda {
+    width: 100% !important;
+    max-width: 430px !important;
+    overflow: visible !important;
+}
+
+#pantallaSobre .portada-boda img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+} */
+
+
+/* CORRECCIÓN DEFINITIVA DEL VISOR DE FOTOS */
+
+#visorFotos {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+    background: rgba(20, 30, 15, 0.94);
+    z-index: 999999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#visorFotos.activo {
+    display: flex !important;
+}
+
+#visorFotos #fotoAmpliada {
+    display: block !important;
+    position: relative;
+    width: auto !important;
+    height: auto !important;
+    max-width: 95% !important;
+    max-height: 85dvh !important;
+    object-fit: contain !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    z-index: 1;
+}
+
+#visorFotos .cerrar-foto {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 2;
+    color: white;
+    font-size: 38px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* PORTADA MÁS GRANDE EN CELULARES */
+
+/* #pantallaSobre {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+}
+
+#pantallaSobre .portada-boda {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100% !important;
+    max-width: none !important;
+    height: 100dvh !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+
+#pantallaSobre .portada-boda img {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain !important;
+    transform: none !important;
+    transform-origin: center center;
+}
+ */
+
+
+/* AJUSTE DEL FONDO FLORAL EN CELULARES */
+@media (max-width: 480px) {
+    #tarjetaInvitacion {
+        background-size: 125% auto;
+        background-position: center top;
+    }
 }
